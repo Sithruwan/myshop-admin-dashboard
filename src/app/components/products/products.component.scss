@@ -1,0 +1,24 @@
+.container{
+
+  span{
+    color: blue;
+  }
+
+  span:hover{
+    cursor: pointer;
+    color: red;
+  }
+  .copyBtn:hover{
+    cursor: pointer;
+    color: blue;
+
+  }
+  .deletebtn:hover{
+    cursor: pointer;
+    color: red;
+  }
+  .editbtn:hover{
+    cursor: pointer;
+    color: red;
+  }
+}

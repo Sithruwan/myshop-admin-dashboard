@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Add New Product</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="productForm" class="container-fluid">
+    <!-- Quantity Input -->
+    <div class="form-group row mb-3">
+      <label for="qty" class="col-sm-3 col-form-label">Quantity</label>
+      <div class="col-sm-9">
+        <input type="number" formControlName="qty" id="qty" class="form-control" placeholder="Enter quantity">
+      </div>
+    </div>
+
+    <!-- Unit Price Input -->
+    <div class="form-group row mb-3">
+      <label for="unitPrice" class="col-sm-3 col-form-label">Unit Price</label>
+      <div class="col-sm-9">
+        <input type="number" formControlName="unitPrice" id="unitPrice" class="form-control" placeholder="Enter unit price">
+      </div>
+    </div>
+
+    <!-- Description Input -->
+    <div class="form-group row mb-3">
+      <label for="description" class="col-sm-3 col-form-label">Description</label>
+      <div class="col-sm-9">
+        <textarea formControlName="description" id="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [disabled]="!productForm.valid" (click)="onSubmit()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>
