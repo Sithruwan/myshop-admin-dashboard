@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatIcon} from '@angular/material/icon';
-import {CustomerStatusManagerComponent} from '../customer-status-manager/customer-status-manager.component';
+import {CustomerStatusManagerComponent} from '../UI components/customer-status-manager/customer-status-manager.component';
+import {MatTooltip} from '@angular/material/tooltip';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-customers',
@@ -9,7 +11,9 @@ import {CustomerStatusManagerComponent} from '../customer-status-manager/custome
   imports: [
     FormsModule,
     MatIcon,
-    CustomerStatusManagerComponent
+    CustomerStatusManagerComponent,
+    MatTooltip,
+    RouterLink
   ],
   templateUrl: './customers.component.html',
   styleUrl: './customers.component.scss'

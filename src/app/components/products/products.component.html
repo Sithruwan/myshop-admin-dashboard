@@ -1,5 +1,9 @@
 <div class="container mt-4">
-  <h2>Product Dashboard</h2>
+  <div class="mytitle  d-flex flex-row align-items-center justify-content-between">
+    <h2>Product Dashboard</h2>
+    <mat-icon class="home-icon " matTooltip="Home" routerLink="/dashboard" >home</mat-icon>
+
+  </div>
 
   <!-- Search Input -->
   <div class="form-group mb-3 d-flex flex-row">
@@ -7,7 +11,7 @@
       <input type="text" class="form-control" placeholder="Search customer..." [(ngModel)]="searchTerm" />
     </div>
     <div class="p-2">
-      <button class="btn btn-primary">+ New Product</button>
+      <button class="btn btn-primary" (click)="openDialogManage()">+ New Product</button>
     </div>
 
 
@@ -35,7 +39,7 @@
             <td>{{ "GoldLeaf" }}</td>
             <td>{{100}}</td>
             <td>{{"USD 0.5 | LKR 150" }}</td>
-            <td><span (click)="openDialogManage()">manage</span></td>
+            <td><span (click)="openDialogManageImages()">manage</span></td>
 
             <td>
               <mat-icon  class="mx-1 deletebtn" (click)="deleteCustomer()" matTooltip="Delete">delete_sweep</mat-icon>

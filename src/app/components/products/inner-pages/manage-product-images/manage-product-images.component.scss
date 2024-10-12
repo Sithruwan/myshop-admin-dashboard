@@ -1,0 +1,25 @@
+.carousel-container {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+  width: 100%; /* Make sure the container has a set width */
+}
+
+.carousel-slide {
+  display: flex;
+  flex-direction: row;
+  gap: 15px; /* Space between images */
+}
+
+.carousel-slide img {
+  width: 150px; /* Control the size of the images */
+  height: auto;
+  flex-shrink: 0; /* Prevent the images from shrinking */
+}
+
+.imageContainer {
+  width: 100%;
+  max-width: 600px; /* Set a maximum width for the image container */
+  overflow-x: hidden; /* Hide extra content outside the container */
+}

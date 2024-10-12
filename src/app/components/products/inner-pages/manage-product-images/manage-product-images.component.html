@@ -1,1 +1,31 @@
-<p>manage-product-images works!</p>
+<h2 mat-dialog-title>Manage Product Images</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="productForm" class="container-fluid">
+    <!-- Image Input -->
+    <div class="form-group row mb-3">
+      <div class="col-sm-9">
+        <input type="file" formControlName="file" id="file" class="form-control" placeholder="Enter quantity">
+      </div>
+    </div>
+  </form>
+  <hr>
+
+  <div class="imageContainer">
+    <div class="carousel-container">
+      <mat-card class="carousel-slide">
+        <img mat-card-image src="https://picsum.photos/200?random=1" alt="Image 1" class="img-fluid">
+        <img mat-card-image src="https://picsum.photos/200?random=2" alt="Image 2" class="img-fluid">
+        <img mat-card-image src="https://picsum.photos/200?random=3" alt="Image 3" class="img-fluid">
+        <img mat-card-image src="https://picsum.photos/200?random=1" alt="Image 1" class="img-fluid">
+        <img mat-card-image src="https://picsum.photos/200?random=2" alt="Image 2" class="img-fluid">
+        <img mat-card-image src="https://picsum.photos/200?random=3" alt="Image 3" class="img-fluid">
+      </mat-card>
+    </div>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [disabled]="!productForm.valid" (click)="onSubmit()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>
