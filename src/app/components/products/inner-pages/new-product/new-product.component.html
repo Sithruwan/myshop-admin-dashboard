@@ -1,6 +1,7 @@
 <h2 mat-dialog-title>Add New Product</h2>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="container-fluid">
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="productForm" class="container-fluid">
+
     <!-- Quantity Input -->
     <div class="form-group row mb-3">
       <label for="qty" class="col-sm-3 col-form-label">Quantity</label>
@@ -24,10 +25,11 @@
         <textarea formControlName="description" id="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
       </div>
     </div>
-  </form>
+
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [disabled]="!productForm.valid" (click)="onSubmit()" cdkFocusInitial>Save</button>
+  <button mat-button [disabled]="!productForm.valid" type="submit" >Save product</button>
 </mat-dialog-actions>
+</form>
