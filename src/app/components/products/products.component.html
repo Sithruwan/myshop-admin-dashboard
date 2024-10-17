@@ -8,9 +8,9 @@
   <!-- Search Input -->
   <div class="form-group mb-3 d-flex flex-row">
     <div class="p-2 col-4">
-      <input type="text" class="form-control" placeholder="Search customer..." [(ngModel)]="searchTerm" />
+      <input type="text" class="form-control" placeholder="Search customer..." [(ngModel)]="searchTerm" (input)="searchBar()"  />
     </div>
-    <div class="p-2">
+    <div class="p-2" >
       <button class="btn btn-primary" (click)="openDialogManage()">+ New Product</button>
     </div>
 
@@ -32,23 +32,33 @@
       </thead>
       <tbody>
       <!-- Loop through filtered products -->
-<!--        @for (customer of customers; track customer.propertyId){-->
+        @for (product of products; track product.propertyId){
           <tr >
 
-            <td>{{ 1 }} <mat-icon class="mx-1 copyBtn">content_copy</mat-icon> </td>
-            <td>{{ "GoldLeaf" }}</td>
-            <td>{{100}}</td>
-            <td>{{"USD 0.5 | LKR 150" }}</td>
+            <td>{{product.propertyId}} <mat-icon class="mx-1 copyBtn" (click)="copyToClipboard(product.propertyId)" matTooltip="Copy">content_copy</mat-icon> </td>
+            <td>{{ product.description}}</td>
+            <td>{{product.qty}}</td>
+            <td>{{product.unitPrice | currency:"USD"}}</td>
             <td><span (click)="openDialogManageImages()">manage</span></td>
 
             <td>
-              <mat-icon  class="mx-1 deletebtn" (click)="deleteCustomer()" matTooltip="Delete">delete_sweep</mat-icon>
-              <mat-icon  class="mx-1 editbtn" (click)="openDialogEdit()" matTooltip="Edit">edit</mat-icon>
+              <mat-icon  class="mx-1 deletebtn" (click)="openDeleteDialog(product.propertyId)" matTooltip="Delete">delete_sweep</mat-icon>
+              <mat-icon  class="mx-1 editbtn" (click)="openDialogEdit(product)" matTooltip="Edit">edit</mat-icon>
             </td>
           </tr>
-<!--        }-->
+        }
 
       </tbody>
     </table>
+    <mat-paginator
+    [length]="count"
+    [pageIndex]="page"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="getServerData($event)"
+    aria-label="Select page"
+    >
+
+    </mat-paginator>
   </div>
 </div>

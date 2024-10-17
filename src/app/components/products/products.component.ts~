@@ -35,8 +35,8 @@ export class ProductsComponent {
   searchTerm: string ="";
   products: any[] = []; // To store product list
   count: number = 0;    // To store the total count of products
-  page: any = 0;
-  pageSize:any = 10;
+  page = 0;
+  pageSize = 10;
 
   readonly dialog = inject(MatDialog);
   readonly productService = inject(ProductService);
@@ -121,9 +121,8 @@ ngOnInit() {
     });
   }
 
-  getServerData(data: PageEvent) {
-    this.page = data?.pageIndex;
-    this.pageSize = data?.pageSize;
+  getServerData($event: PageEvent) {
+    console.log($event);
     this.loadAllData();
   }
 }
