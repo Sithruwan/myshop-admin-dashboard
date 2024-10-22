@@ -9,7 +9,7 @@ import {
 } from '@angular/material/dialog';
 import {MatButton} from '@angular/material/button';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ProductService} from '../../../../services/product.service';
+import {ProductService} from '../../../../services/product/product.service';
 import {Product} from '../../../../models/product.model';
 import {response} from 'express';
 

@@ -1,31 +1,42 @@
 <h2 mat-dialog-title>Manage Product Images</h2>
-<mat-dialog-content class="mat-typography">
-  <form [formGroup]="productForm" class="container-fluid">
-    <!-- Image Input -->
-    <div class="form-group row mb-3">
-      <div class="col-sm-9">
-        <input type="file" formControlName="file" id="file" class="form-control" placeholder="Enter quantity">
-      </div>
+<form [formGroup]="productImageForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
+    <div class="col-12">
+      <label for="file">Product Image</label>
+      <input (change)="onFileSelected($event)" formControlName="image" type="file" class="form-control" id="file">
     </div>
-  </form>
-  <hr>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-raised-button cdkFocusInitial [disabled]="loading || productImageForm.invalid" color="primary">Upload Image</button>
+  </mat-dialog-actions>
+</form>
+<hr>
 
-  <div class="imageContainer">
-    <div class="carousel-container">
-      <mat-card class="carousel-slide">
-        <img mat-card-image src="https://picsum.photos/200?random=1" alt="Image 1" class="img-fluid">
-        <img mat-card-image src="https://picsum.photos/200?random=2" alt="Image 2" class="img-fluid">
-        <img mat-card-image src="https://picsum.photos/200?random=3" alt="Image 3" class="img-fluid">
-        <img mat-card-image src="https://picsum.photos/200?random=1" alt="Image 1" class="img-fluid">
-        <img mat-card-image src="https://picsum.photos/200?random=2" alt="Image 2" class="img-fluid">
-        <img mat-card-image src="https://picsum.photos/200?random=3" alt="Image 3" class="img-fluid">
-      </mat-card>
-    </div>
+<div class="image-outer" style="display: flex; align-items: center; overflow: auto">
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
+  </div>
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
+  </div>
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
+  </div>
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
+  </div>
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
+  </div>
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
+  </div>
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
+  </div>
+  <div class="image" style="border:1px solid red; width: 100px; min-width: 100px; height: 100px; min-height: 100px;">
+    <img src="" alt="">
   </div>
 
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [disabled]="!productForm.valid" (click)="onSubmit()" cdkFocusInitial>Save</button>
-</mat-dialog-actions>
+</div>

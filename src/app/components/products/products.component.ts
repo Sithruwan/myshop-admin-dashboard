@@ -8,10 +8,12 @@ import {UpdateProductComponent} from './inner-pages/update-product/update-produc
 import {MatTooltip} from '@angular/material/tooltip';
 import {ManageProductImagesComponent} from './inner-pages/manage-product-images/manage-product-images.component';
 import {RouterLink} from '@angular/router';
-import {ProductService} from '../../services/product.service';
+import {ProductService} from '../../services/product/product.service';
 import {DeleteProductComponent} from './inner-pages/delete-product/delete-product.component';
 import {CurrencyPipe} from '@angular/common';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import {ClipboardService} from '../../services/clipboard/clipboard.service';
+import {ForexService} from '../../services/forex/forex.service';
 
 
 
@@ -37,15 +39,21 @@ export class ProductsComponent {
   count: number = 0;    // To store the total count of products
   page: any = 0;
   pageSize:any = 10;
+  rate = 0;
 
   readonly dialog = inject(MatDialog);
   readonly productService = inject(ProductService);
+  readonly clipService = inject(ClipboardService);
+  private forexService = inject(ForexService);
 
 
 
 ngOnInit() {
+  this.forexService.getRate('USD').subscribe(data => {
+    this.rate=data.rates?.LKR;
+    this.loadAllData();
+  })
 
-  this.loadAllData();
 }
 
   openDialogManage() {
@@ -72,8 +80,12 @@ ngOnInit() {
   }
 
 
-  openDialogManageImages() {
-    const dialogRef = this.dialog.open(ManageProductImagesComponent);
+  openDialogManageImages(product: any) {
+    const dialogRef = this.dialog.open(ManageProductImagesComponent,{
+      data: {
+        product
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -105,11 +117,7 @@ ngOnInit() {
   }
 
   copyToClipboard(propertyId: string) {
-    navigator.clipboard.writeText(propertyId).then(() => {
-      alert("Property ID copied to clipboard");
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-    });
+    this.clipService.copyToClipboard(propertyId);
   }
 
 

@@ -8,7 +8,7 @@ import {
   MatDialogRef,
   MatDialogTitle
 } from "@angular/material/dialog";
-import {ProductService} from '../../../../services/product.service';
+import {ProductService} from '../../../../services/product/product.service';
 import {MatIcon} from '@angular/material/icon';
 
 @Component({

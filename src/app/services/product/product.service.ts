@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Product} from '../models/product.model';
+import {Product} from '../../models/product.model';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -26,4 +26,9 @@ export class ProductService {
     const url = `${this.BaseURL}/${propertyId}`;
     return this.http.delete(url);
   }
+
+  productImageUpload(data: FormData, productId: string): Observable<any> {
+    return this.http.post(`http://localhost:8001/api/v1/product-images/${productId}`, data);
+  }
+
 }

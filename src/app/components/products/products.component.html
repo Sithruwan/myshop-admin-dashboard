@@ -38,8 +38,8 @@
             <td>{{product.propertyId}} <mat-icon class="mx-1 copyBtn" (click)="copyToClipboard(product.propertyId)" matTooltip="Copy">content_copy</mat-icon> </td>
             <td>{{ product.description}}</td>
             <td>{{product.qty}}</td>
-            <td>{{product.unitPrice | currency:"USD"}}</td>
-            <td><span (click)="openDialogManageImages()">manage</span></td>
+            <td>{{product.unitPrice | currency:"USD"}} | {{product.unitPrice*rate | currency:"LKR"}}</td>
+            <td><span (click)="openDialogManageImages(product)">manage</span></td>
 
             <td>
               <mat-icon  class="mx-1 deletebtn" (click)="openDeleteDialog(product.propertyId)" matTooltip="Delete">delete_sweep</mat-icon>
